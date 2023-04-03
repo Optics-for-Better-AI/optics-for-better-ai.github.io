@@ -13,8 +13,33 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet" />
     </head>
+    
+    <script>
+     $(function() {
+        $('#nav li a').click(function() {
+           $('#nav li a').removeClass();
+           $(this).addClass('active');
+        });
+     });
+     
+     $(function () {
+      $(document).scroll(function () {
+        var $nav = $('#nav li a');
+        for (let i = 0; i < $nav.length; i++) {
+            var navElement = $($nav[i]);
+            var hrefElement = $(navElement.attr('href'))
+            navElement.toggleClass('active', $(this).scrollTop() > hrefElement.offset().top);
+            navElement.toggleClass('scrolled', $(this).scrollTop() > hrefElement.offset().top + hrefElement.height());
+        }
+      });
+    });
+    </script>
     <body>
         <!-- Navigation-->
         <!-- <nav class="navbar navbar-light bg-light static-top"> -->
@@ -24,14 +49,17 @@
             <!-- </div> -->
         <!-- </nav> -->
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masthead" id="home">
             <div class="container position-relative">
                 <div class="row justify-content-center">
-                    <div class="col-xl-6">
+                    <div class="col-xl-10">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Optics for Better AI:<br>
-Capturing and Synthesizing Realistic Data for Low-light Enhancement</h1>
+                            <div style="text-align: right">
+                                <img src="assets/img/cvpr_banner_homepage.svg" height=80 style="margin-top:-20pt; margin-bottom:40pt">
+                            </div>
+                            <h1 class="mb-6" style="font-size: 4rem;">Optics for Better AI<br></h1>
+                            <h1 class="mb-6">Capturing and Synthesizing Realistic Data for Low-light Enhancement</h1>
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -46,128 +74,125 @@ Capturing and Synthesizing Realistic Data for Low-light Enhancement</h1>
                 </div>
             </div>
         </header>
+        <ul class="topnav" id="nav" style="z-index: 4;">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li class="right"><a href="#speakers">Speakers</a></li>
+        </ul>
         <!-- Icons Grid-->
-        <section class="features-icons bg-light text-center">
+        <section class="features-icons bg-light text-left" id="abstract">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
-                            <h3>Fully Responsive</h3>
-                            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                            <h3>Bootstrap 5 Ready</h3>
-                            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 5 framework!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
-                            <h3>Easy to Use</h3>
-                            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-                        </div>
-                    </div>
+                <div class="paragraph-title" style="text-align:center;">
+                    CVPR 2023 Tutorial on "Optics for Better AI"
+                </div>
+                <p style="text-align:center;color:#559cff">
+                    Half-Day, June 19th, CVPR 2023 (Vancouver, Canada)
+                </p>
+                <div class="paragraph">
+                    Acquiring visually pleasing images and videos under insufficient lighting has been an essential task for human perception and computer-based scene understanding, yet it remains to be challenging because of the fundamental restrictions of insufficient photon counts and complex noises implied by consumer-grade image sensors. In past decades, a great variety of techniques, on the basis of filtering, sparsity, and so on, for image denoising and enhancement have been proposed, which are proven less applicable to severely degraded images with a variety of intertwined noises. A breakthrough was achieved by the study of Chen et al. (<a href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_Learning_to_See_CVPR_2018_paper.pdf" style="text-decoration: none;color:#ffc455">Learning to See in the Dark, CVPR2018</a>), which reveals that supervised deep learning techniques are capable of enhancing low-light images in the RAW domain, as long as sufficient amount of paired dark/bright images are provided.<br> <br> 
+                    A typical way of collecting paired dark/bright images with short exposure and long exposure is applicable to static scenes only, and the scale and variation of such a dataset are usually limited. To resolve these limitations, some novel optical and mechanical systems have recently been developed, which enable the capturing of paired dark/bright videos, rather than static images. Another promising thread of research is to model, either fully or partially, the distribution of major types of noise in the photon-electron-digit transition process, and then to synthesize realistic low-light images from clean bright images. It has been verified that models trained on such synthesized data can even surpass those trained on captured data.
                 </div>
             </div>
         </section>
-        <!-- Image Showcases-->
-        <section class="showcase">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
-                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                        <h2>Fully Responsive Design</h2>
-                        <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-                    </div>
+        <section class="features-icons bg-light text-left" id="schedule">
+            <div class="container">
+                <div class="paragraph-title">
+                    Schedule
                 </div>
-                <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
-                    <div class="col-lg-6 my-auto showcase-text">
-                        <h2>Updated For Bootstrap 5</h2>
-                        <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
-                    </div>
+                
+                <div class="paragraph">
+                    This half-day tutorial will cover the latest advances in the broad theme of <span style="color:#ff6f55;">Optics for Better AI</span>, with a specific focus on how to <span style="color:red;">capture</span> and <span style="color:red;">synthesize</span> realistic data for training low-light enhancement deep models. In this tutorial, we will first present the overall pipeline and effects of using realistic data, including (i) Low-light Image Enhancement using Synthesized Data; (ii) Low-light Video Enhancement using Captured Data. Then, we show detailed instructions on noise calibration and construction of optical imaging systems, including (iii) How to Calibrate the Noise Model of a Specific Camera; (iv) How to Construct a Co-axial Imaging System.<br><br> 
+                    Considering that realistic data are critical for many other image restoration tasks, like deblurring, super-resolution, frame interpolation, dynamic range extension, the presented techniques in noise modeling and calibration, as well as the construction details of co-axial imaging system, will be valuable to all scholars in scene enhancement and understanding with adversarial imaging factors.
+                    <br><br>
+                    Detailed schedule will be updated soon.
+                    <br><br><br><br>
                 </div>
-                <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
-                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                        <h2>Easy to Use & Customize</h2>
-                        <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
-                    </div>
-                </div>
+                <table class="schedule" id="CVPR-program">
+                    <tbody><tr class="cvpr_row">
+                        <td><b>Start Time</b></td>
+                        <td><b>Section</b></td>
+                        <td><b>Presentor</b></td>
+                        <!-- <td><b>Length</b></td> -->
+                    </tr>
+                    <tr class="cvpr_row">
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <!-- <td></td> -->
+                    </tr>
+                </tbody></table>
+                
             </div>
         </section>
         <!-- Testimonials-->
-        <section class="testimonials text-center bg-light">
+        <section class="testimonials text-center bg-light" id="speakers">
             <div class="container">
                 <h2 class="mb-5">Speakers</h2>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
-                            <h5>Margaret E.</h5>
-                            <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/鄭銀強-Yinqiang-Zheng.jpg" alt="..." />
+                            <h5>Yinqiang Zheng</h5>
+                            <!-- <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p> -->
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                             <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
-                            <h5>Fred S.</h5>
-                            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+                            <h5>Yunhao Zou</h5>
+                            <!-- <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p> -->
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
-                            <h5>Sarah W.</h5>
-                            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/Haiyang Jiang.jpg" alt="..." />
+                            <h5>Haiyang Jiang</h5>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
-                            <h5>Sarah W.</h5>
-                            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/YingFu.jpg" alt="..." />
+                            <h5>Ying Fu</h5>
+                            <!-- <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p> -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
-        <footer class="footer bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <!-- <footer class="footer bg-light"> -->
+            <!-- <div class="container"> -->
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-lg-6 h-100 text-center text-lg-start my-auto"> -->
+                        <!-- <ul class="list-inline mb-2"> -->
+                            <!-- <li class="list-inline-item"><a href="#!">About</a></li> -->
+                            <!-- <li class="list-inline-item">⋅</li> -->
+                            <!-- <li class="list-inline-item"><a href="#!">Contact</a></li> -->
+                            <!-- <li class="list-inline-item">⋅</li> -->
+                            <!-- <li class="list-inline-item"><a href="#!">Terms of Use</a></li> -->
+                            <!-- <li class="list-inline-item">⋅</li> -->
+                            <!-- <li class="list-inline-item"><a href="#!">Privacy Policy</a></li> -->
+                        <!-- </ul> -->
+                        <!-- <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p> -->
+                    <!-- </div> -->
+                    <!-- <div class="col-lg-6 h-100 text-center text-lg-end my-auto"> -->
+                        <!-- <ul class="list-inline mb-0"> -->
+                            <!-- <li class="list-inline-item me-4"> -->
+                                <!-- <a href="#!"><i class="bi-facebook fs-3"></i></a> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-inline-item me-4"> -->
+                                <!-- <a href="#!"><i class="bi-twitter fs-3"></i></a> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-inline-item"> -->
+                                <!-- <a href="#!"><i class="bi-instagram fs-3"></i></a> -->
+                            <!-- </li> -->
+                        <!-- </ul> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </footer> -->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

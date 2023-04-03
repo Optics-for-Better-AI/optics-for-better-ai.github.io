@@ -93,8 +93,27 @@
 
 @font-face {
   font-family: simplifica;
-  src: url(assets/SIMPLIFICA Typeface.ttf);
+  src: url(../assets/fonts/SIMPLIFICA Typeface.ttf);
 }
+
+
+@font-face {
+  font-family: vesperlibre-bold;
+  src: url(../assets/fonts/VesperLibre-Bold.ttf);
+}
+
+
+@font-face {
+  font-family: proximanova-bold;
+  src: url(../assets/fonts/proximanova-bold.otf);
+}
+
+
+@font-face {
+  font-family: futura-bold;
+  src: url(../assets/fonts/Futura Bold font.ttf);
+}
+
 
 body {
   margin: 0;
@@ -1404,13 +1423,15 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
-@media (min-width: 2000px) {
+
+@media (min-width: 2400px) {
     
   .col-xl-6 {
     flex: 0 0 auto;
     width: 50%;
   }
 }
+
 @media (min-width: 1200px) {
   .col-xl {
     flex: 1 0 0%;
@@ -7679,6 +7700,16 @@ textarea.form-control-lg {
   font-family: simplifica;
 }
 
+.mb-6 {
+  margin-bottom: 4rem !important;
+  font-family: vesperlibre-bold;
+}
+
+.mb-7 {
+  margin-bottom: 3rem !important;
+  font-family: vesperlibre-bold;
+}
+
 .mb-auto {
   margin-bottom: auto !important;
 }
@@ -10834,8 +10865,8 @@ textarea.form-control-lg {
   }
 }
 .features-icons {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
 }
 .features-icons .features-icons-item {
   max-width: 20rem;
@@ -10850,7 +10881,7 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #ffffff;
-  background: url("../assets/img/bg-masthead.png") no-repeat center center;
+  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -10925,4 +10956,98 @@ header.masthead h1, header.masthead .h1 {
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+
+ul.topnav {
+  position: sticky;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f3f3f3;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #666;
+}
+
+ul.topnav li a:hover:not(.active) {
+  color: #f3f3f3;
+  background-color: #04AA6D;
+}
+
+ul.topnav li a.active {
+  color: #f3f3f3;
+  background-color: #0D6EFD;
+}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+ul.topnav li a.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+  color: #666;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.paragraph {
+  font-family: simplifica;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.paragraph-title {
+  font-family: futura-bold;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+table.schedule {
+    border-color: #999;
+    border-style: none;
+    text-align: center;
+    border-width: 0 0 1px 1px;
+    border-collapse: collapse;
+    background-color: #f3f3f3;
+    margin: 0 auto;
+    /* width: 100%; */
+    color: #000;
+}
+
+table#program td {
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+}
+
+table#CVPR-program td{
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff;
+}
+
+tr.cvpr_row:nth-child(odd) {
+    background-color: #559cff;
 }
